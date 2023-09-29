@@ -1,0 +1,80 @@
+GRANT CREATE TABLE TO your_user;
+GRANT CREATE SEQUENCE TO your_user;
+--Replace your_user with the actual username you are using to connect to the Oracle database.
+
+-- Create the "User" table with double quotes
+CREATE TABLE "User" (
+    UserID NUMBER PRIMARY KEY,
+    FirstName VARCHAR2(50),
+    LastName VARCHAR2(50),
+    Email VARCHAR2(100),
+    PhoneNumber VARCHAR2(20)
+);
+
+-- Create the Company table
+CREATE TABLE Company (
+    CompanyID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    Location VARCHAR2(100),
+    Industry VARCHAR2(50)
+);
+
+-- Create the Job table
+CREATE TABLE Job (
+    JobID NUMBER PRIMARY KEY,
+    Title VARCHAR2(100),
+    Description CLOB,
+    Salary NUMBER(10, 2),
+    CompanyID NUMBER REFERENCES Company(CompanyID),
+    PostingDate DATE
+);
+
+-- Create the Application table
+CREATE TABLE Application (
+    ApplicationID NUMBER PRIMARY KEY,
+    UserID NUMBER REFERENCES "User"(UserID),
+    JobID NUMBER REFERENCES Job(JobID),
+    ApplicationDate DATE,
+    Status VARCHAR2(20)
+);
+
+-- Insert 10 values into the "User" table
+INSERT INTO "User" (UserID, FirstName, LastName, Email, PhoneNumber)
+SELECT 1, 'John', 'Doe', 'johndoe@example.com', '555-1234' FROM DUAL UNION ALL
+SELECT 2, 'Jane', 'Smith', 'janesmith@example.com', '555-5678' FROM DUAL UNION ALL
+SELECT 3, 'Bob', 'Johnson', 'bob@example.com', '555-9876' FROM DUAL UNION ALL
+SELECT 4, 'Alice', 'Brown', 'alice@example.com', '555-4321' FROM DUAL UNION ALL
+SELECT 5, 'Ella', 'Davis', 'ella@example.com', '555-8765' FROM DUAL UNION ALL
+SELECT 6, 'Mike', 'Wilson', 'mike@example.com', '555-2345' FROM DUAL UNION ALL
+SELECT 7, 'Emily', 'Taylor', 'emily@example.com', '555-7890' FROM DUAL UNION ALL
+SELECT 8, 'David', 'Lee', 'david@example.com', '555-3456' FROM DUAL UNION ALL
+SELECT 9, 'Sarah', 'Clark', 'sarah@example.com', '555-6543' FROM DUAL UNION ALL
+SELECT 10, 'Chris', 'Anderson', 'chris@example.com', '555-1122' FROM DUAL;
+
+-- Insert 10 values into the "Company" table using INSERT INTO ... SELECT
+INSERT INTO Company (CompanyID, Name, Location, Industry)
+SELECT 1, 'ABC Corp', 'New York', 'Technology' FROM DUAL UNION ALL
+SELECT 2, 'XYZ Inc', 'San Francisco', 'Finance' FROM DUAL UNION ALL
+SELECT 3, 'Tech Solutions', 'Los Angeles', 'Technology' FROM DUAL UNION ALL
+SELECT 4, 'Global Bank', 'London', 'Finance' FROM DUAL UNION ALL
+SELECT 5, 'Acme Enterprises', 'Chicago', 'Manufacturing' FROM DUAL UNION ALL
+SELECT 6, 'Data Systems', 'Houston', 'Technology' FROM DUAL UNION ALL
+SELECT 7, 'Financial Services', 'Toronto', 'Finance' FROM DUAL UNION ALL
+SELECT 8, 'Innovate Inc', 'Berlin', 'Technology' FROM DUAL UNION ALL
+SELECT 9, 'Widget Co', 'Sydney', 'Manufacturing' FROM DUAL UNION ALL
+SELECT 10, 'City Bank', 'Tokyo', 'Finance' FROM DUAL;
+
+-- Insert 10 values into the "Job" table using INSERT INTO ... SELECT
+INSERT INTO Job (JobID, Title, Description, Salary, CompanyID, PostingDate)
+SELECT 1, 'Software Engineer', 'Developing web applications', 80000.00, 1, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 2, 'Data Analyst', 'Analyzing data trends', 75000.00, 3, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 3, 'Financial Analyst', 'Analyzing financial data', 85000.00, 7, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 4, 'Product Manager', 'Managing product development', 95000.00, 8, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 5, 'Mechanical Engineer', 'Designing mechanical systems', 85000.00, 5, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 6, 'Marketing Manager', 'Developing marketing campaigns', 90000.00, 2, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 7, 'Sales Representative', 'Selling company products', 70000.00, 10, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 8, 'Data Scientist', 'Building predictive models', 95000.00, 6, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 9, 'Quality Control Analyst', 'Ensuring product quality', 80000.00, 9, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL UNION ALL
+SELECT 10, 'Network Administrator', 'Managing network infrastructure', 85000.00, 4, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL;
+
+-- For the "Application" table, you would need to know the appropriate UserIDs and JobIDs to insert values, as they depend on existing data in the "User" and "Job" tables.
