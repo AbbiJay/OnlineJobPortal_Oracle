@@ -78,3 +78,50 @@ SELECT 9, 'Quality Control Analyst', 'Ensuring product quality', 80000.00, 9, TO
 SELECT 10, 'Network Administrator', 'Managing network infrastructure', 85000.00, 4, TO_DATE('2023-09-28', 'YYYY-MM-DD') FROM DUAL;
 
 -- For the "Application" table, you would need to know the appropriate UserIDs and JobIDs to insert values, as they depend on existing data in the "User" and "Job" tables.
+-- Insert 15 values into the "Application" table
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (1, 1, 1, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (2, 2, 2, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (3, 3, 3, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Approved');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (4, 4, 4, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (5, 5, 5, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Approved');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (6, 6, 6, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Rejected');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (7, 7, 7, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (8, 8, 8, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Approved');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (9, 9, 9, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (10, 10, 10, TO_DATE('2023-09-28', 'YYYY-MM-DD'), 'Rejected');
+
+-- Additional 5 rows
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (11, 1, 2, TO_DATE('2023-09-29', 'YYYY-MM-DD'), 'Approved');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (12, 2, 3, TO_DATE('2023-09-29', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (13, 3, 4, TO_DATE('2023-09-29', 'YYYY-MM-DD'), 'Approved');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (14, 4, 5, TO_DATE('2023-09-29', 'YYYY-MM-DD'), 'Pending');
+
+INSERT INTO Application (ApplicationID, UserID, JobID, ApplicationDate, Status)
+VALUES (15, 5, 6, TO_DATE('2023-09-29', 'YYYY-MM-DD'), 'Approved');
